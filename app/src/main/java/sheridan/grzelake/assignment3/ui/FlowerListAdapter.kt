@@ -9,16 +9,16 @@ import sheridan.grzelake.assignment3.R
 import sheridan.grzelake.assignment3.databinding.FlowerListItemBinding
 import sheridan.grzelake.assignment3.model.Flower
 
-class FlowerListAdapter (): ListAdapter<Flower, FlowerListAdapter.ViewHolder>(FlowerDiffCallback()){
+class FlowerListAdapter (val cListener: FlowerClickedListener): ListAdapter<Flower, FlowerListAdapter.ViewHolder>(FlowerDiffCallback()){
 
     class ViewHolder private constructor(private val binding: FlowerListItemBinding
     ): RecyclerView.ViewHolder(binding.root){
 
-        fun bind(count: Int, flower: Flower){
+        fun bind(count: Int, flower: Flower, cListener: FlowerClickedListener){
             binding.count.text = binding.root.context.getString(R.string.count, count)
-
             binding.flower = flower
             binding.executePendingBindings()
+            binding.cListener = cListener
         }
 
         companion object {
@@ -36,7 +36,7 @@ class FlowerListAdapter (): ListAdapter<Flower, FlowerListAdapter.ViewHolder>(Fl
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(position + 1, getItem(position))
+        holder.bind(position + 1, getItem(position), cListener)
     }
 
     class FlowerDiffCallback : DiffUtil.ItemCallback<Flower>() {
@@ -48,4 +48,8 @@ class FlowerListAdapter (): ListAdapter<Flower, FlowerListAdapter.ViewHolder>(Fl
             return oldItem == newItem
         }
     }
+}
+
+class FlowerClickedListener(val cListener: (flowerId: Flower) -> Unit) {
+    fun onClick(flId: Flower) = cListener(flId)
 }

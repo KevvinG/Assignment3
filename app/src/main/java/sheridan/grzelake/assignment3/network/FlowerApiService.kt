@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-private const val BASE_URL = "http://tetervak.dev.fast.sheridanc.on.ca/Examples/jQuery/Flowers3/"
+private const val BASE_URL = "https://tetervak.dev.fast.sheridanc.on.ca/Examples/jQuery/Flowers3/data/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())

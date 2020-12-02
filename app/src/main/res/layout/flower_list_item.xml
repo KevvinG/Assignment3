@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="sheridan.grzelake.assignment3.model.Flower"/>
-        <variable name="flower" type="Flower" />
+        <variable
+            name="flower"
+            type="Flower" />
+        <variable
+            name="cListener"
+            type="sheridan.grzelake.assignment3.ui.FlowerClickedListener"/>
     </data>
 
     <LinearLayout
@@ -16,7 +21,7 @@
             android:id="@+id/count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:onClick="@{() -> cListener.onClick(flower)}"
             android:textAppearance="?attr/textAppearanceListItem"
             tools:text="1." />
 
@@ -26,6 +31,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceListItem"
             android:text="@{flower.label}"
+            android:onClick="@{() -> cListener.onClick(flower)}"
             tools:text="Aster" />
     </LinearLayout>
 </layout>
