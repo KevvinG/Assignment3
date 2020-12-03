@@ -27,8 +27,6 @@ class DetailsFragment : Fragment() {
 
         val binding = FragmentDetailsBinding.inflate(inflater)
 
-        //binding.textviewSecond.text = data.label
-
         val imgurl = "http://tetervak.dev.fast.sheridanc.on.ca/Examples/jQuery/Flowers3/images/flowers/" + data.picture
         var flower = data
         flower.picture = imgurl
@@ -40,7 +38,7 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_second).setOnClickListener {
+        view.findViewById<Button>(R.id.btn_return).setOnClickListener {
             findNavController().navigate(R.id.action_detailsFragment_to_flowerListFragment)
         }
     }

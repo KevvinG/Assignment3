@@ -41,5 +41,5 @@ class FlowerListViewModel : ViewModel() {
 }
 
 fun FlowerJson.asFlower(index: Int): Flower{
-    return Flower(label, text, pictures.large, index.toLong())
+    return Flower(label, text, pictures.large, price, index.toLong())
 }
