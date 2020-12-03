@@ -22,7 +22,6 @@ class FlowerListViewModel : ViewModel() {
             val flowers = catalog.flowers.mapIndexed { index, flowerJson ->
                 flowerJson.asFlower(index)
             }
-//            Log.e("Flower", flowers[1].label)
             emit(flowers)
         }.also {
             flowerListData = it
