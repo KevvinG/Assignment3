@@ -38,13 +38,13 @@ class FlowerListFragment : Fragment() {
             adapter.submitList(it)
         }
 
-//        viewModel.selectedFlower.observe(viewLifecycleOwner, {
-//            flowerInfo -> flowerInfo?.let {
-//            findNavController().navigate(
-//
-//            )
-//        }
-//        })
+        viewModel.selectedFlower.observe(viewLifecycleOwner) {
+                flowerDetails -> flowerDetails?.let {
+            findNavController().navigate (
+                FlowerListFragmentDirections.actionFlowerListFragmentToDetailsFragment(flowerDetails))
+            viewModel.onNavComplete()
+        }
+        }
 
         return binding.root
     }
